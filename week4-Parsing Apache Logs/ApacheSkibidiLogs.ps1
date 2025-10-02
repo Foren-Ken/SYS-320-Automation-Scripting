@@ -2,8 +2,8 @@
 $unformattedLogs = Get-Content C:\xampp\apache\logs\access.log
 $deliverable = @()
 
-for($x=0; $x -lt 1<#$unformattedLogs.Length#>; $x++){
-$x
+for($x=0; $x -lt $unformattedLogs.Length; $x++){
+# $x
 $chopper = $unformattedLogs[$x].Split(" ")
 # $chopper
 
@@ -19,5 +19,5 @@ $deliverable += [pscustomobject]@{"IP" = $chopper[0];
 }
 return $deliverable | Where-Object {$_.IP -ilike "10.*"}
 }
-$deliverable = ApacheLogs1
-$deliverable | Format-Table -Autosize -Wrap
+# $deliverable = ApacheLogs1
+# $deliverable | Format-Table -Autosize -Wrap
