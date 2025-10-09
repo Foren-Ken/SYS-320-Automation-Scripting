@@ -240,7 +240,7 @@ while($operation){
     
         elseif($choice -eq 9){
 
-                $numOfDays = Read-Host -Prompt "How long ago do you want to look: " 
+             $numOfDays = Read-Host -Prompt "How long ago do you want to look: " 
         
         if ($numOfDays -match "^\d+$"){
             Write-Host "Proper input detected. Processing..."
@@ -250,13 +250,7 @@ while($operation){
             continue
         }
 
-        Write-Host "The folowing Users are found to be at risk where `"Name`" is the name of the user and
-        `"Count`" is how many failed loggins that user encountered"
-
-        $userLogins = getFailedLogins -timeBack $numOfDays
-
-        $results = $userLogins | group-object User | Select-object Name, Count | Where-Object {$_.Count -ge 10}
-        
+        $results = atRiskUsers($numOfDays)
         
          Write-Host ($results | Format-Table | Out-String)
         }

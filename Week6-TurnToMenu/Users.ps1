@@ -111,11 +111,3 @@ function checkPass($password){
         return $false
         }
         }
-function atRiskUsers($numOfDays){
-
-        Write-Host "The folowing Users are found to be at risk where `"Name`" is the name of the user and
-        `"Count`" is how many failed loggins that user encountered"
-
-        return getFailedLogins -timeBack $numOfDays | group-object User | Select-object Name, Count | Where-Object {$_.Count -ge 10}
-        
-}
