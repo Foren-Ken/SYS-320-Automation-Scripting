@@ -1,5 +1,4 @@
-﻿. (Join-Path $PSScriptRoot String-Helper.ps1)
-
+﻿. "C:\Users\champuser\SYS-320-Automation-Scripting\Week6-LocalUserManagement\String-Helper.ps1"
 
 <# ******************************
      Function Explaination
@@ -64,3 +63,12 @@ function getFailedLogins($timeBack){
 
     return $failedloginsTable
 } # End of function getFailedLogins
+
+function atRiskUsers($numOfDays){
+
+        Write-Host "The folowing Users are found to be at risk where `"Name`" is the name of the user and
+        `"Count`" is how many failed loggins that user encountered"
+
+        return getFailedLogins -timeBack $numOfDays | group-object User | Select-object Name, Count | Where-Object {$_.Count -ge 10}
+        
+}
