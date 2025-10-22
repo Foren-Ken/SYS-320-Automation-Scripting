@@ -20,4 +20,4 @@ for ($x=0;$x -lt $skibidiLogs.length ; $x++){
 }
 }
 }
-skibidiChallenge3 | Format-Table -Autosize -Wrap
+# skibidiChallenge3 | Format-Table -Autosize -Wrap
